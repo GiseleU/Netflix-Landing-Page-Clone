@@ -1,20 +1,36 @@
 const tabItems = document.querySelectorAll('.tab-item');
 const tabContentItems = document.querySelectorAll('.tab-content-item');
 
-// Select tab content item
+// Select tab content item 
 function SelectItem(e) {
+    // Remove all show and border classes
     removeBorder();
     removeShow();
-    //Add border to current tab
+    // Add border to current tab item
     this.classList.add('tab-border');
+    // Grab content from the DOM
+    const tabContentItem = document.querySelector(`#${this.id}-content`);
+    // Add show class
+    tabContentItem.classList.add('show');
 }
 
-function removeBorder(){
-    tabItems.forEach(item => item.classList.remove('tab-border'));
+// Remove bottom borders from all tab items
+function removeBorder() {
+    tabItems.forEach(item => {
+        item.classList.remove('tab-border');
+    });
 }
 
-function removeShow(){
-    tabContentItems.forEach(item => item.classList.remove('show'));
+// Remove show class from all tab items
+function removeShow() {
+    tabContentItems.forEach(item => {
+        item.classList.remove('show');
+    });
 }
+
 // Listen for tab click
-tabItems.forEach(item => item.addEventListener('click', selectItem));
+tabItems.forEach(item => { 
+    item.addEventListener('click', SelectItem);
+});
+
+
